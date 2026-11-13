@@ -21,7 +21,7 @@
 - Light and dark mode, works on phone and desktop.
 
 ## 🚀 Deploy (Cloudflare Pages, free)
-1. Put this whole folder in a GitHub repo (`index.html`, `functions/api/chat.js`, `README.md`, `LICENSE`).
+1. Keep the API file at **`functions/api/chat.js`** (not at the project root as `chat.js`). Cloudflare Pages only registers this route when it is inside the `functions/api/` directory. Put this whole folder in a GitHub repo (`index.html`, `functions/api/chat.js`, `README.md`, `LICENSE`).
 2. Cloudflare → **Workers & Pages → Create → Pages → Import an existing Git repository**.
 3. Build command: empty. Build output directory: `/`.
 4. After deploy: **Settings → Variables and Secrets → Add** `GEMINI_KEY` (type **Secret**) = your Gemini API key. Redeploy once.
@@ -37,3 +37,7 @@ MIT. See [LICENSE](LICENSE).
 
 ---
 Made with ❤️ by **Adarsh** · [Crown Lab](https://devvadarsh.github.io/crownlab)
+
+
+## Cloudflare Pages API route
+The chat endpoint is implemented by `functions/api/chat.js`, which maps to `/api/chat`. Do not upload it as a root-level `chat.js` file. After moving the file, push the change and let Cloudflare Pages redeploy. Set `GEMINI_KEY` under **Settings → Variables and Secrets** as a secret, then redeploy.
